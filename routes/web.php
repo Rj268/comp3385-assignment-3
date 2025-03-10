@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,9 @@ Route::get('/about', function () {
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // Create additional Routes below
+
+Route::get('/login', [AuthController::class, 'create'])->name('login');
+
+Route::post('/login', [AuthController::class, 'store']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
