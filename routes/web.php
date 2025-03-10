@@ -37,3 +37,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::get('/clients/add',[ClientController::class, 'create'])->middleware('auth');
 
 Route::post('/clients',[ClientController::class, 'store'])->middleware('auth');
+
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
