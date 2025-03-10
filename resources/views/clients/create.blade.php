@@ -1,27 +1,44 @@
-<h1>Create Client</h1>
+@extends('layouts.app')
 
-<form action="{{ url('/clients') }}" method="POST" enctype="multipart/form-data">
-    @csrf
+@section('content')
+<div class="container">
+    <h1>Create Client</h1>
 
-    <label>Name *</label>
-    <input type="text" name="name" required>
-    @error('name') <span>{{ $message }}</span> @enderror
+    <form action="{{ url('/clients') }}" method="POST" enctype="multipart/form-data">
+        @csrf
 
-    <label>Email *</label>
-    <input type="email" name="email" required>
-    @error('email') <span>{{ $message }}</span> @enderror
+        <div class="mb-3">
+            <label class="form-label">Name *</label>
+            <input type="text" class="form-control" name="name" required>
+            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+        </div>
 
-    <label>Phone *</label>
-    <input type="tel" name="telephone" placeholder="xxx-xxx-xxxx" required>
-    @error('telephone') <span>{{ $message }}</span> @enderror
+        <div class="mb-3">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-control" name="email" required>
+            @error('email')<span class="text-danger">{{ $message }}</span>@enderror
+        </div>
 
-    <label>Address *</label>
-    <input type="text" name="address" required>
-    @error('address') <span>{{ $message }}</span> @enderror
+        <div class="mb-3">
+            <label class="form-label">Phone *</label>
+            <input type="tel" class="form-control" name="telephone" placeholder="xxx-xxx-xxxx" required>
+            @error('telephone')<span class="text-danger">{{ $message }}</span>@enderror
+        </div>
 
-    <label>Company Logo *</label>
-    <input type="file" name="company_logo" accept="image/*">
-    @error('company_logo') <span>{{ $message }}</span> @enderror
+        <div class="mb-3">
+            <label class="form-label">Address *</label>
+            <input type="text" class="form-control" name="address" required>
+            @error('address')<span class="text-danger">{{ $message }}</span>@enderror
+        </div>
 
-    <button type="submit">Create</button>
-</form>
+        <div class="mb-3">
+            <label class="form-label">Company Logo *</label>
+            <input type="file" class="form-control" name="company_logo" accept="image/*">
+            @error('company_logo')<span class="text-danger">{{ $message }}</span>@enderror
+            <p>Only image files (e.g. jpg, png) are allowed and files must be less than 2MB</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+@endsection
