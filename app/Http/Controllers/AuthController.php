@@ -27,4 +27,14 @@ class AuthController extends Controller
         }
         return back()->with('error', 'Invalid credentials. Check the email address and password entered.');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'Logout successful');
+    }
 }
